@@ -1,0 +1,76 @@
+import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
+
+  const links = [
+    { to: '/', label: 'Home' },
+    { to: '/blog', label: 'Blog' },
+    { to: '/contact', label: 'Contact' },
+    { to: '/admin', label: 'Admin' },
+  ]
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <Link to="/" className="text-xl font-bold text-black">
+            atomicustadh
+          </Link>
+
+          <div className="hidden md:flex space-x-8">
+            {links.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`${
+                  location.pathname === link.to
+                    ? 'text-black font-bold'
+                    : 'text-gray-600 hover:text-black'
+                } transition-colors`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-gray-600 hover:text-black"
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-5 flex flex-col justify-between">
+              <span className={`block h-0.5 bg-current transform transition ${isOpen ? 'rotate-45 translate-y-2.25' : ''}`} />
+              <span className={`block h-0.5 bg-current transition ${isOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 bg-current transform transition ${isOpen ? '-rotate-45 -translate-y-2.25' : ''}`} />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          {links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setIsOpen(false)}
+              className={`block px-4 py-3 ${
+                location.pathname === link.to
+                  ? 'text-black font-bold bg-gray-50'
+                  : 'text-gray-600'
+              }`}
+              aria-current={location.pathname === link.to ? 'page' : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </nav>
+  )
+}
+
+export default Navbar

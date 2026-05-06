@@ -1,0 +1,232 @@
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
+import { createPost, getPosts, deletePost, updatePost } from '../lib/blogService'
+import { useEditor, EditorContent } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import Link from '@tiptap/extension-link'
+import Image from '@tiptap/extension-image'
+
+function Admin() {
+  const { user, loading, login, logout } = useAuth()
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [authError, setAuthError] = useState('')
+  const [posts, setPosts] = useState([])
+  const [editingPost, setEditingPost] = useState(null)
+  const [formData, setFormData] = useState({ title: '', content: '', excerpt: '', tags: '' })
+
+  const editor = useEditor({
+    extensions: [StarterKit, Link, Image],
+    content: formData.content,
+    onUpdate: ({ editor }) => {
+      setFormData((prev) => ({ ...prev, content: editor.getHTML() }))
+    },
+  })
+
+  useEffect(() => {
+    if (user) loadPosts()
+  }, [user])
+
+  useEffect(() => {
+    if (editor && editingPost) {
+      editor.commands.setContent(editingPost.content || '')
+    }
+  }, [editingPost, editor])
+
+  async function loadPosts() {
+    const data = await getPosts()
+    setPosts(data)
+  }
+
+  const handleAuth = async (e) => {
+    e.preventDefault()
+    try {
+      await login(email, password)
+    } catch (err) {
+      setAuthError('Invalid credentials')
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const tags = formData.tags.split(',').map((t) => t.trim()).filter(Boolean)
+    try {
+      if (editingPost) {
+        await updatePost(editingPost.id, { ...formData, tags })
+      } else {
+        await createPost({ ...formData, tags })
+      }
+      setFormData({ title: '', content: '', excerpt: '', tags: '' })
+      setEditingPost(null)
+      editor?.commands.setContent('')
+      loadPosts()
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const handleEdit = (post) => {
+    setEditingPost(post)
+    setFormData({
+      title: post.title,
+      content: post.content,
+      excerpt: post.excerpt,
+      tags: post.tags?.join(', ') || '',
+    })
+  }
+
+  const handleDelete = async (id) => {
+    if (confirm('Delete this post?')) {
+      await deletePost(id)
+      loadPosts()
+    }
+  }
+
+  if (loading) return <div className="pt-32 text-center">Loading...</div>
+
+  if (!user) {
+    return (
+      <div className="min-h-screen pt-32 pb-12 bg-white">
+        <div className="max-w-md mx-auto px-4">
+          <h1 className="text-3xl font-bold mb-8 text-center">Admin Login</h1>
+          <form onSubmit={handleAuth} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium mb-2">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-2">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+              />
+            </div>
+            {authError && <p className="text-gray-600">{authError}</p>}
+            <button type="submit" className="w-full py-3 bg-black text-white font-semibold hover:bg-gray-800">
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen pt-24 pb-12 bg-white">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">Admin Panel</h1>
+          <button onClick={logout} className="px-4 py-2 border border-gray-300 hover:bg-gray-50">
+            Logout
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="mb-12 space-y-6 border border-gray-200 p-6">
+          <h2 className="text-xl font-bold">{editingPost ? 'Edit Post' : 'New Post'}</h2>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Title</label>
+            <input
+              type="text"
+              value={formData.title}
+              onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+              required
+              className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Excerpt</label>
+            <input
+              type="text"
+              value={formData.excerpt}
+              onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+              className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Content</label>
+            <div className="border border-gray-300">
+              <div className="border-b border-gray-300 p-2 flex gap-2">
+                <button type="button" onClick={() => editor?.chain().focus().toggleBold().run()} className="px-2 py-1 hover:bg-gray-100">Bold</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleItalic().run()} className="px-2 py-1 hover:bg-gray-100">Italic</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} className="px-2 py-1 hover:bg-gray-100">H2</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()} className="px-2 py-1 hover:bg-gray-100">List</button>
+              </div>
+              <EditorContent editor={editor} className="p-4 min-h-[200px]" />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-2">Tags (comma-separated)</label>
+            <input
+              type="text"
+              value={formData.tags}
+              onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
+              className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+            />
+          </div>
+
+          <div className="flex gap-4">
+            <button type="submit" className="px-6 py-3 bg-black text-white font-semibold hover:bg-gray-800">
+              {editingPost ? 'Update' : 'Create'}
+            </button>
+            {editingPost && (
+              <button
+                type="button"
+                onClick={() => {
+                  setEditingPost(null)
+                  setFormData({ title: '', content: '', excerpt: '', tags: '' })
+                  editor?.commands.setContent('')
+                }}
+                className="px-6 py-3 border border-gray-300 hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
+        </form>
+
+        <div>
+          <h2 className="text-xl font-bold mb-4">Posts</h2>
+          {posts.length === 0 ? (
+            <p className="text-gray-600">No posts yet.</p>
+          ) : (
+            <div className="space-y-4">
+              {posts.map((post) => (
+                <div key={post.id} className="border border-gray-200 p-4 flex justify-between items-center">
+                  <div>
+                    <h3 className="font-bold">{post.title}</h3>
+                    <p className="text-sm text-gray-600">{post.excerpt}</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <button onClick={() => handleEdit(post)} className="px-3 py-1 border border-gray-300 hover:bg-gray-50 text-sm">
+                      Edit
+                    </button>
+                    <button onClick={() => handleDelete(post.id)} className="px-3 py-1 border border-gray-300 hover:bg-gray-50 text-sm">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Admin
