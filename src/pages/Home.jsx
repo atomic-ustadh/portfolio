@@ -20,10 +20,10 @@ function Home() {
       <div className="relative z-10">
         <section className="flex items-center justify-center min-h-screen px-4 mt-8">
           <div className="max-w-6xl text-left text-white">
-            <h1 className="mt-20 mb-4 text-5xl font-bold md:text-7xl">
+            <h1 className="mt-20 mb-4 text-4xl font-bold md:text-7xl">
               ABDURRAHMAN LUQMAN YUSUF
             </h1>
-            <p className="mb-2 text-lg text-left text-gray-300 md:text-xl">
+            <p className="mb-2 text-left text-gray-300 text-md md:text-xl">
               a.k.a Atomic Ustadh
             </p>
             <p className="mb-8 text-xl text-gray-200 md:text-xl">
@@ -46,22 +46,69 @@ function Home() {
           </div>
         </section>
 
-        <section id="about" className="bg-gray-300">
+        <section id="about" className="bg-white">
           <div className="max-w-6xl px-4 py-20 mx-auto">
             <h2 className="mb-8 text-3xl font-bold text-center md:text-4xl">
               About Me
             </h2>
             <div className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
               <p className="mb-4">
-                Full stack developer with experience in building modern web
-                applications. Passionate about clean code, user experience, and
-                continuous learning.
+                I'm Abdurrahman Luqman Yusuf, a Full Stack Developer with a B.A. in Arabic
+                from the University of Abuja (2019-2023) and currently pursuing my M.A. in
+                Arabic Language and Linguistics.
+              </p>
+              <p className="mb-4">
+                My tech journey includes frontend development work on the Incident Response
+                Emergency System (iRES), website maintenance at the University of Abuja,
+                and a web editor internship at Moren Technology Solutions. I hold an AWS
+                Cloud Practitioner certification and a Silver Badge in Machine Learning.
               </p>
               <p>
-                Currently focused on React, Node.js, and cloud technologies.
-                Always excited to take on new challenges and build impactful
-                products.
+                I speak Arabic, English, Yoruba, and Hausa. Beyond coding, I've spent
+                several years teaching Arabic and Islamic Studies, which has strengthened
+                my communication skills and passion for sharing knowledge through technology.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" className="text-white bg-black/20">
+          <div className="max-w-6xl px-4 py-20 mx-auto">
+            <h2 className="mb-12 text-3xl font-bold text-center md:text-4xl">
+              Services I Offer
+            </h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Web Development",
+                  description: "Building responsive, performant web applications using React, Node.js, and modern frameworks."
+                },
+                {
+                  title: "Web Design",
+                  description: "Creating clean, user-friendly interfaces with Tailwind CSS and modern design principles."
+                },
+                {
+                  title: "Translation",
+                  description: "Professional translation services in Arabic, English, Yoruba, and Hausa languages."
+                },
+                {
+                  title: "Teaching and Mentorship",
+                  description: "Teaching Qur'an, Arabic language, and Islamic Studies with years of classroom experience."
+                },
+                {
+                  title: "Technical Training & Support",
+                  description: "Online and on-site tech support, system maintenance, and training for client schools."
+                },
+                {
+                  title: "Typing & Printing Services",
+                  description: "Professional typing, document formatting, and printing services. Proficient in Microsoft Office Suite."
+                }
+              ].map((service) => (
+                <div key={service.title} className="p-6 transition-shadow border border-gray-200 hover:shadow-lg">
+                  <h3 className="mb-3 text-xl font-bold">{service.title}</h3>
+                  <p className="leading-relaxed text-gray-300">{service.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
