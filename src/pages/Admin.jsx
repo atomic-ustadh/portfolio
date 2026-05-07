@@ -89,11 +89,11 @@ function Admin() {
   if (!user) {
     return (
       <div className="min-h-screen pt-32 pb-12 bg-white">
-        <div className="max-w-md mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-8 text-center">Admin Login</h1>
+        <div className="max-w-md px-4 mx-auto">
+          <h1 className="mb-8 text-3xl font-bold text-center">Admin Login</h1>
           <form onSubmit={handleAuth} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
+              <label className="block mb-2 text-sm font-medium">Email</label>
               <input
                 type="email"
                 value={email}
@@ -103,7 +103,7 @@ function Admin() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Password</label>
+              <label className="block mb-2 text-sm font-medium">Password</label>
               <input
                 type="password"
                 value={password}
@@ -113,7 +113,7 @@ function Admin() {
               />
             </div>
             {authError && <p className="text-gray-600">{authError}</p>}
-            <button type="submit" className="w-full py-3 bg-black text-white font-semibold hover:bg-gray-800">
+            <button type="submit" className="w-full py-3 font-semibold text-white bg-black hover:bg-gray-800">
               Login
             </button>
           </form>
@@ -124,19 +124,19 @@ function Admin() {
 
   return (
     <div className="min-h-screen pt-24 pb-12 bg-white">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
+      <div className="max-w-4xl px-4 mx-auto">
+        <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Admin Panel</h1>
           <button onClick={logout} className="px-4 py-2 border border-gray-300 hover:bg-gray-50">
             Logout
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="mb-12 space-y-6 border border-gray-200 p-6">
+        <form onSubmit={handleSubmit} className="p-6 mb-12 space-y-6 border border-gray-200">
           <h2 className="text-xl font-bold">{editingPost ? 'Edit Post' : 'New Post'}</h2>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Title</label>
+            <label className="block mb-2 text-sm font-medium">Title</label>
             <input
               type="text"
               value={formData.title}
@@ -147,7 +147,7 @@ function Admin() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Excerpt</label>
+            <label className="block mb-2 text-sm font-medium">Excerpt</label>
             <input
               type="text"
               value={formData.excerpt}
@@ -157,9 +157,9 @@ function Admin() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Content</label>
+            <label className="block mb-2 text-sm font-medium">Content</label>
             <div className="border border-gray-300">
-              <div className="border-b border-gray-300 p-2 flex gap-2">
+              <div className="flex gap-2 p-2 border-b border-gray-300">
                 <button type="button" onClick={() => editor?.chain().focus().toggleBold().run()} className="px-2 py-1 hover:bg-gray-100">Bold</button>
                 <button type="button" onClick={() => editor?.chain().focus().toggleItalic().run()} className="px-2 py-1 hover:bg-gray-100">Italic</button>
                 <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} className="px-2 py-1 hover:bg-gray-100">H2</button>
@@ -170,7 +170,7 @@ function Admin() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Tags (comma-separated)</label>
+            <label className="block mb-2 text-sm font-medium">Tags (comma-separated)</label>
             <input
               type="text"
               value={formData.tags}
@@ -180,7 +180,7 @@ function Admin() {
           </div>
 
           <div className="flex gap-4">
-            <button type="submit" className="px-6 py-3 bg-black text-white font-semibold hover:bg-gray-800">
+            <button type="submit" className="px-6 py-3 font-semibold text-white bg-black hover:bg-gray-800">
               {editingPost ? 'Update' : 'Create'}
             </button>
             {editingPost && (
@@ -200,22 +200,22 @@ function Admin() {
         </form>
 
         <div>
-          <h2 className="text-xl font-bold mb-4">Posts</h2>
+          <h2 className="mb-4 text-xl font-bold">Posts</h2>
           {posts.length === 0 ? (
             <p className="text-gray-600">No posts yet.</p>
           ) : (
             <div className="space-y-4">
               {posts.map((post) => (
-                <div key={post.id} className="border border-gray-200 p-4 flex justify-between items-center">
+                <div key={post.id} className="flex items-center justify-between p-4 border border-gray-200">
                   <div>
                     <h3 className="font-bold">{post.title}</h3>
                     <p className="text-sm text-gray-600">{post.excerpt}</p>
                   </div>
                   <div className="flex gap-2">
-                    <button onClick={() => handleEdit(post)} className="px-3 py-1 border border-gray-300 hover:bg-gray-50 text-sm">
+                    <button onClick={() => handleEdit(post)} className="px-3 py-1 text-sm border border-gray-300 hover:bg-gray-50">
                       Edit
                     </button>
-                    <button onClick={() => handleDelete(post.id)} className="px-3 py-1 border border-gray-300 hover:bg-gray-50 text-sm">
+                    <button onClick={() => handleDelete(post.id)} className="px-3 py-1 text-sm border border-gray-300 hover:bg-gray-50">
                       Delete
                     </button>
                   </div>
