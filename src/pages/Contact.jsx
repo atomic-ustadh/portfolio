@@ -13,7 +13,10 @@ function Contact() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => setStatus('success'))
+      .then(() => {
+        setStatus('success')
+        form.reset()
+      })
       .catch(() => setStatus('error'))
   }
 
@@ -32,12 +35,14 @@ function Contact() {
           </div>
         ) : (
           <form
-            name="contact-me-form"
-            method="POST"
-            netlify
-            onSubmit={handleSubmit}
-            className="space-y-6"
-          >
+             name="contact-me-form"
+             method="POST"
+             data-netlify="true"
+             onSubmit={handleSubmit}
+             className="space-y-6"
+           >
+             <input type="hidden" name="form-name" value="contact-me-form" />
+             <input name="bot-field" hidden />
             <div>
               <label htmlFor="name" className="block mb-2 text-sm font-medium">
                 Name
