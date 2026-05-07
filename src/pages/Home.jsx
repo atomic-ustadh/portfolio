@@ -53,7 +53,7 @@ function Home() {
             </h2>
             <div className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
               <p className="mb-4">
-                I'm Abdurrahman Luqman Yusuf, a Linguist and a Full Stack Developer with a B.A. in Arabic
+                I'm Abdurrahman Luqman Yusuf, a Full Stack Developer and a Linguist, with a B.A. in Arabic
                 from the University of Abuja (2019-2023) and currently pursuing my M.A. in
                 Arabic Language and Linguistics.
               </p>
