@@ -20,7 +20,7 @@ function Home() {
       <div className="relative z-10">
         <section className="flex items-center justify-center min-h-screen px-4 mt-8">
           <div className="max-w-6xl text-left text-white">
-            <h1 className="mt-20 mb-4 text-5xl font-bold md:text-7xl">
+            <h1 className="mt-20 mb-4 text-4xl font-bold md:text-7xl">
               ABDURRAHMAN LUQMAN YUSUF
             </h1>
             <p className="mb-2 text-lg text-left text-gray-300 md:text-xl">

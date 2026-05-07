@@ -88,12 +88,12 @@ function Admin() {
 
   if (!user) {
     return (
-      <div className="min-h-screen pt-32 pb-12 bg-white">
+      <div className="min-h-screen pt-32 pb-12 bg-black">
         <div className="max-w-md px-4 mx-auto">
-          <h1 className="mb-8 text-3xl font-bold text-center">Admin Login</h1>
+          <h1 className="mb-8 text-3xl font-bold text-center text-white">Admin Login</h1>
           <form onSubmit={handleAuth} className="space-y-6">
             <div>
-              <label className="block mb-2 text-sm font-medium">Email</label>
+              <label className="block mb-2 text-sm font-medium text-white">Email</label>
               <input
                 type="email"
                 value={email}
@@ -103,7 +103,7 @@ function Admin() {
               />
             </div>
             <div>
-              <label className="block mb-2 text-sm font-medium">Password</label>
+              <label className="block mb-2 text-sm font-medium text-white">Password</label>
               <input
                 type="password"
                 value={password}
@@ -113,7 +113,7 @@ function Admin() {
               />
             </div>
             {authError && <p className="text-gray-600">{authError}</p>}
-            <button type="submit" className="w-full py-3 font-semibold text-white bg-black hover:bg-gray-800">
+            <button type="submit" className="w-full py-3 font-semibold text-white bg-gray-800 border hover:border-gray-300">
               Login
             </button>
           </form>
