@@ -14,9 +14,18 @@ function BlogList() {
 
   return (
     <div className="min-h-screen pt-24 pb-12 bg-white">
+      {/* Background Image with Overlay */}
+      <div
+        className="fixed inset-0 z-0 bg-fixed bg-center bg-cover"
+        style={{ backgroundImage: "url(/my_profile_e.png)" }}
+      >
+        <div className="absolute inset-0 bg-black/80" />
+      </div>
+      {/* Background Image with Overlay */}
+
       <SEO title="Blog" description="Read technical articles and tutorials by atomicustadh" />
-      <div className="max-w-6xl mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center">Blog</h1>
+      <div className="relative z-10 max-w-6xl px-4 mx-auto">
+        <h1 className="mb-12 text-4xl font-bold text-center text-white md:text-5xl">Blog</h1>
 
         {allTags.length > 0 && (
           <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -43,9 +52,9 @@ function BlogList() {
         )}
 
         {posts.length === 0 ? (
-          <p className="text-center text-gray-600">No posts yet.</p>
+          <p className="text-center text-gray-200">No posts yet.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}

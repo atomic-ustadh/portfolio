@@ -8,12 +8,14 @@ function Home() {
         title="Home"
         description="atomicustadh - Full Stack Developer portfolio with blog"
       />
+      {/* Background Image with Overlay */}
       <div
         className="fixed inset-0 z-0 bg-fixed bg-center bg-cover"
         style={{ backgroundImage: "url(/my_profile_e.png)" }}
       >
         <div className="absolute inset-0 bg-black/60" />
       </div>
+      {/* Background Image with Overlay */}
 
       <div className="relative z-10">
         <section className="flex items-center justify-center min-h-screen px-4 mt-8">

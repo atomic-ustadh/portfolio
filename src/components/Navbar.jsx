@@ -28,7 +28,7 @@ function Navbar() {
     }`}>
       <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-bold text-white text-md">
+          <Link to="/" className="px-2 text-sm font-bold text-white border-2 border-black hover:border-white">
             atomic <br></br> ustadh
           </Link>
 

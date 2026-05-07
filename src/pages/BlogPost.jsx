@@ -32,16 +32,16 @@ function BlogPost() {
   const sanitizedContent = DOMPurify.sanitize(post.content || '')
 
   return (
-    <div className="min-h-screen pt-24 pb-12 bg-white">
+    <div className="min-h-screen pt-24 pb-12 bg-black">
       <SEO title={post.title} description={post.excerpt} />
-      <article className="max-w-3xl mx-auto px-4">
-        <Link to="/blog" className="text-gray-600 hover:text-black mb-8 inline-block">
+      <article className="max-w-5xl px-4 mx-auto">
+        <Link to="/blog" className="inline-block mb-8 text-gray-300 hover:underline">
           ← Back to Blog
         </Link>
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
+        <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">{post.title}</h1>
 
-        <div className="flex items-center gap-4 text-sm text-gray-500 mb-8">
+        <div className="flex items-center gap-4 mb-8 text-sm text-gray-400">
           <span>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
           <span>·</span>
           <span>{Math.ceil((post.content?.length || 0) / 2000) || 1} min read</span>
@@ -50,7 +50,7 @@ function BlogPost() {
         {post.tags?.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-8">
             {post.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 bg-gray-100 text-sm">
+              <span key={tag} className="px-3 py-1 text-sm bg-gray-100">
                 {tag}
               </span>
             ))}
@@ -58,7 +58,7 @@ function BlogPost() {
         )}
 
         <div
-          className="prose max-w-none"
+          className="prose text-white max-w-none"
           dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         />
       </article>

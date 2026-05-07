@@ -123,20 +123,20 @@ function Admin() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-12 bg-white">
+    <div className="min-h-screen pt-24 pb-12 bg-black">
       <div className="max-w-4xl px-4 mx-auto">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold">Admin Panel</h1>
-          <button onClick={logout} className="px-4 py-2 border border-gray-300 hover:bg-gray-50">
+          <h1 className="text-3xl font-bold text-white">Admin Panel</h1>
+          <button onClick={logout} className="px-4 py-2 text-white border border-gray-300 hover:bg-gray-700">
             Logout
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 mb-12 space-y-6 border border-gray-200">
-          <h2 className="text-xl font-bold">{editingPost ? 'Edit Post' : 'New Post'}</h2>
+          <h2 className="text-xl font-bold text-white">{editingPost ? 'Edit Post' : 'New Post'}</h2>
 
           <div>
-            <label className="block mb-2 text-sm font-medium">Title</label>
+            <label className="block mb-2 text-sm font-medium text-white">Title</label>
             <input
               type="text"
               value={formData.title}
@@ -147,7 +147,7 @@ function Admin() {
           </div>
 
           <div>
-            <label className="block mb-2 text-sm font-medium">Excerpt</label>
+            <label className="block mb-2 text-sm font-medium text-white">Excerpt</label>
             <input
               type="text"
               value={formData.excerpt}
@@ -157,20 +157,20 @@ function Admin() {
           </div>
 
           <div>
-            <label className="block mb-2 text-sm font-medium">Content</label>
+            <label className="block mb-2 text-sm font-medium text-white">Content</label>
             <div className="border border-gray-300">
-              <div className="flex gap-2 p-2 border-b border-gray-300">
-                <button type="button" onClick={() => editor?.chain().focus().toggleBold().run()} className="px-2 py-1 hover:bg-gray-100">Bold</button>
-                <button type="button" onClick={() => editor?.chain().focus().toggleItalic().run()} className="px-2 py-1 hover:bg-gray-100">Italic</button>
-                <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} className="px-2 py-1 hover:bg-gray-100">H2</button>
-                <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()} className="px-2 py-1 hover:bg-gray-100">List</button>
+              <div className="flex gap-2 p-2 text-white border-b border-gray-300">
+                <button type="button" onClick={() => editor?.chain().focus().toggleBold().run()} className="px-2 py-1 hover:bg-gray-700">Bold</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleItalic().run()} className="px-2 py-1 hover:bg-gray-700">Italic</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} className="px-2 py-1 hover:bg-gray-700">H2</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()} className="px-2 py-1 hover:bg-gray-700">List</button>
               </div>
-              <EditorContent editor={editor} className="p-4 min-h-[200px]" />
+              <EditorContent editor={editor} className="p-4 min-h-[200px] bg-white focus:outline-none" />
             </div>
           </div>
 
           <div>
-            <label className="block mb-2 text-sm font-medium">Tags (comma-separated)</label>
+            <label className="block mb-2 text-sm font-medium text-white">Tags (comma-separated)</label>
             <input
               type="text"
               value={formData.tags}
@@ -180,7 +180,7 @@ function Admin() {
           </div>
 
           <div className="flex gap-4">
-            <button type="submit" className="px-6 py-3 font-semibold text-white bg-black hover:bg-gray-800">
+            <button type="submit" className="px-6 py-3 font-semibold text-white bg-gray-700 border hover:bg-black">
               {editingPost ? 'Update' : 'Create'}
             </button>
             {editingPost && (
@@ -191,7 +191,7 @@ function Admin() {
                   setFormData({ title: '', content: '', excerpt: '', tags: '' })
                   editor?.commands.setContent('')
                 }}
-                className="px-6 py-3 border border-gray-300 hover:bg-gray-50"
+                className="px-6 py-3 text-white border border-gray-300 hover:bg-gray-700"
               >
                 Cancel
               </button>
@@ -199,23 +199,23 @@ function Admin() {
           </div>
         </form>
 
-        <div>
+        <div className="text-white">
           <h2 className="mb-4 text-xl font-bold">Posts</h2>
           {posts.length === 0 ? (
-            <p className="text-gray-600">No posts yet.</p>
+            <p className="text-gray-300">No posts yet.</p>
           ) : (
             <div className="space-y-4">
               {posts.map((post) => (
                 <div key={post.id} className="flex items-center justify-between p-4 border border-gray-200">
                   <div>
                     <h3 className="font-bold">{post.title}</h3>
-                    <p className="text-sm text-gray-600">{post.excerpt}</p>
+                    <p className="text-sm text-gray-300">{post.excerpt}</p>
                   </div>
                   <div className="flex gap-2">
-                    <button onClick={() => handleEdit(post)} className="px-3 py-1 text-sm border border-gray-300 hover:bg-gray-50">
+                    <button onClick={() => handleEdit(post)} className="px-3 py-1 text-sm border border-gray-300 hover:bg-gray-700">
                       Edit
                     </button>
-                    <button onClick={() => handleDelete(post.id)} className="px-3 py-1 text-sm border border-gray-300 hover:bg-gray-50">
+                    <button onClick={() => handleDelete(post.id)} className="px-3 py-1 text-sm border border-gray-300 hover:bg-gray-700">
                       Delete
                     </button>
                   </div>
