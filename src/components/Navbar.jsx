@@ -19,6 +19,7 @@ function Navbar() {
     { to: '/blog', label: 'Blog' },
     { to: '/contact', label: 'Contact' },
     { to: '/admin', label: 'Admin' },
+    { to: '/CV', label: 'CV' },
   ]
 
   return (
@@ -27,8 +28,8 @@ function Navbar() {
     }`}>
       <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-bold text-white">
-            atomicustadh
+          <Link to="/" className="font-bold text-white text-md">
+            atomic <br></br> ustadh
           </Link>
 
           <div className="hidden space-x-8 md:flex">

@@ -28,7 +28,7 @@ function Contact() {
         {status === 'success' ? (
           <div className="py-12 text-center">
             <h2 className="mb-4 text-2xl font-bold">Thank You!</h2>
-            <p className="text-gray-900">Your message has been sent successfully.</p>
+            <p className="text-gray-200">Your message has been sent successfully.</p>
           </div>
         ) : (
           <form

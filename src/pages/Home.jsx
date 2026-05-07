@@ -10,27 +10,27 @@ function Home() {
       />
       <div
         className="fixed inset-0 z-0 bg-fixed bg-center bg-cover"
-        style={{ backgroundImage: "url(/BMW.png)" }}
+        style={{ backgroundImage: "url(/my_profile_e.png)" }}
       >
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <div className="relative z-10">
-        <section className="flex items-center justify-center min-h-screen px-4">
-          <div className="max-w-5xl text-center text-white">
-            <h1 className="mb-4 text-5xl font-bold md:text-7xl">
-              Abdurrahman Luqman Yusuf
+        <section className="flex items-center justify-center min-h-screen px-4 mt-8">
+          <div className="max-w-6xl text-left text-white">
+            <h1 className="mt-20 mb-4 text-5xl font-bold md:text-7xl">
+              ABDURRAHMAN LUQMAN YUSUF
             </h1>
-            <p className="mb-2 text-xl text-gray-200 md:text-2xl">
-              Full Stack Developer
+            <p className="mb-2 text-lg text-left text-gray-300 md:text-xl">
+              a.k.a Atomic Ustadh
             </p>
-            <p className="mb-8 text-lg text-gray-300 md:text-xl">
-              Building elegant solutions with modern web technologies
+            <p className="mb-8 text-xl text-gray-200 md:text-xl">
+              B.A Arabic Language and Literature (UniAbuja) ||  Frontend Developer  ||  Translator  ||  Teacher
             </p>
             <div className="flex justify-center gap-4">
               <Link
                 to="/blog"
-                className="px-6 py-3 font-semibold text-black transition-colors bg-white hover:bg-gray-200"
+                className="px-6 py-3 font-semibold text-black transition-colors bg-white border-2 hover:bg-black/5 hover:text-white hover:border-white"
               >
                 Read Blog
               </Link>
@@ -64,7 +64,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="projects" className="text-white bg-black">
+        <section id="projects" className="text-white bg-black/20">
           <div className="max-w-6xl px-4 py-20 mx-auto">
             <h2 className="mb-12 text-3xl font-bold text-center md:text-4xl">
               Projects
@@ -109,7 +109,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="skills" className="text-white bg-black">
+        <section id="skills" className="text-white bg-black/20">
           <div className="max-w-6xl px-4 py-20 mx-auto">
             <h2 className="mb-12 text-3xl font-bold text-center md:text-4xl">
               Skills
@@ -127,20 +127,40 @@ function Home() {
                   ],
                 },
                 {
+                  category: "Backend",
+                  skills: ["Node.js", "Express", "Firebase", "REST APIs"],
+                },
+                {
                   category: "Linguistics",
                   skills: [
                     "Translation",
                     "Language Analysis",
                     "Cross-cultural Communication",
+                    "Arabic Language Proficiency"
                   ],
                 },
                 {
-                  category: "Backend",
-                  skills: ["Node.js", "Express", "Firebase", "REST APIs"],
+                  category: "Tools",
+                  skills: ["Git", "GitHub", "VS Code", "Netlify & Vercel", "Figma", "Supabase & Firebase"],
                 },
                 {
-                  category: "Tools",
-                  skills: ["Git", "GitHub", "VS Code", "Netlify", "Figma"],
+                  category: "Teaching",
+                  skills: [
+                    "The Glorious Qur'an",
+                    "Islamic Studies",
+                    "Arabic Language",
+                    "Computer Literacy",
+                  ],
+                },
+                {
+                  category: "Productivity",
+                  skills: [
+                    "Microsoft Office",
+                    "Google Meet & Zoom",
+                    "Slack & Trello",
+                    "WakaTime",
+                    "Typing"
+                  ],
                 },
               ].map((group) => (
                 <div
