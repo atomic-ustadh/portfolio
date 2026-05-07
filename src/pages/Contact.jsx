@@ -34,13 +34,10 @@ function Contact() {
           <form
             name="contact-me-form"
             method="POST"
-            data-netlify="true"
+            netlify
             onSubmit={handleSubmit}
             className="space-y-6"
           >
-            <input type="hidden" name="form-name" value="contact" />
-            <input name="bot-field" hidden />
-
             <div>
               <label htmlFor="name" className="block mb-2 text-sm font-medium">
                 Name

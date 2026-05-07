@@ -4,6 +4,7 @@ PRD.txt
 architecture.txt
 plan.txt
 work_phases.md
+DEPLOYMENT.md
 
 # Dependencies
 node_modules/
