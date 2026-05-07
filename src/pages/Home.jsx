@@ -9,34 +9,34 @@ function Home() {
         description="atomicustadh - Full Stack Developer portfolio with blog"
       />
       <div
-        className="fixed inset-0 bg-cover bg-center bg-fixed z-0"
+        className="fixed inset-0 z-0 bg-fixed bg-center bg-cover"
         style={{ backgroundImage: "url(/BMW.png)" }}
       >
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <div className="relative z-10">
-        <section className="min-h-screen flex items-center justify-center px-4">
-          <div className="text-center text-white max-w-5xl">
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+        <section className="flex items-center justify-center min-h-screen px-4">
+          <div className="max-w-5xl text-center text-white">
+            <h1 className="mb-4 text-5xl font-bold md:text-7xl">
               Abdurrahman Luqman Yusuf
             </h1>
-            <p className="text-xl md:text-2xl mb-2 text-gray-200">
+            <p className="mb-2 text-xl text-gray-200 md:text-2xl">
               Full Stack Developer
             </p>
-            <p className="text-lg md:text-xl text-gray-300 mb-8">
+            <p className="mb-8 text-lg text-gray-300 md:text-xl">
               Building elegant solutions with modern web technologies
             </p>
             <div className="flex justify-center gap-4">
               <Link
                 to="/blog"
-                className="px-6 py-3 bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
+                className="px-6 py-3 font-semibold text-black transition-colors bg-white hover:bg-gray-200"
               >
                 Read Blog
               </Link>
               <Link
                 to="/contact"
-                className="px-6 py-3 border-2 border-white text-white font-semibold hover:bg-white hover:text-black transition-colors"
+                className="px-6 py-3 font-semibold text-white transition-colors border-2 border-white hover:bg-white hover:text-black"
               >
                 Contact Me
               </Link>
@@ -44,12 +44,12 @@ function Home() {
           </div>
         </section>
 
-        <section id="about" className="bg-white">
-          <div className="max-w-6xl mx-auto px-4 py-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+        <section id="about" className="bg-gray-300">
+          <div className="max-w-6xl px-4 py-20 mx-auto">
+            <h2 className="mb-8 text-3xl font-bold text-center md:text-4xl">
               About Me
             </h2>
-            <div className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
+            <div className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
               <p className="mb-4">
                 Full stack developer with experience in building modern web
                 applications. Passionate about clean code, user experience, and
@@ -64,30 +64,34 @@ function Home() {
           </div>
         </section>
 
-        <section id="projects" className="bg-black text-white">
-          <div className="max-w-6xl mx-auto px-4 py-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+        <section id="projects" className="text-white bg-black">
+          <div className="max-w-6xl px-4 py-20 mx-auto">
+            <h2 className="mb-12 text-3xl font-bold text-center md:text-4xl">
               Projects
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[1, 2, 3].map((i) => (
                 <div
                   key={i}
-                  className="border border-gray-700 p-6 hover:shadow-lg transition-shadow"
+                  className="p-6 transition-shadow border border-gray-700 hover:shadow-lg"
                 >
-                  <div className="bg-gray-800 h-48 mb-4 flex items-center justify-center text-gray-400">
+                  <div className="flex items-center justify-center h-48 mb-4 text-gray-400 bg-gray-800">
                     Project Image
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-white">Project {i}</h3>
-                  <p className="text-gray-300 mb-4">
+                  <h3 className="mb-2 text-xl font-bold text-white">
+                    Project {i}
+                  </h3>
+                  <p className="mb-4 text-gray-300">
                     Description of project {i} and the technologies used.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="px-2 py-1 bg-gray-800 text-white text-sm">React</span>
-                    <span className="px-2 py-1 bg-gray-800 text-white text-sm">
+                    <span className="px-2 py-1 text-sm text-white bg-gray-800">
+                      React
+                    </span>
+                    <span className="px-2 py-1 text-sm text-white bg-gray-800">
                       Node.js
                     </span>
-                    <span className="px-2 py-1 bg-gray-800 text-white text-sm">
+                    <span className="px-2 py-1 text-sm text-white bg-gray-800">
                       Firebase
                     </span>
                   </div>
@@ -105,12 +109,12 @@ function Home() {
           </div>
         </section>
 
-        <section id="skills" className="bg-black text-white">
-          <div className="max-w-6xl mx-auto px-4 py-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+        <section id="skills" className="text-white bg-black">
+          <div className="max-w-6xl px-4 py-20 mx-auto">
+            <h2 className="mb-12 text-3xl font-bold text-center md:text-4xl">
               Skills
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   category: "Frontend",
@@ -120,6 +124,14 @@ function Home() {
                     "TypeScript",
                     "Tailwind CSS",
                     "HTML/CSS",
+                  ],
+                },
+                {
+                  category: "Linguistics",
+                  skills: [
+                    "Translation",
+                    "Language Analysis",
+                    "Cross-cultural Communication",
                   ],
                 },
                 {
@@ -133,13 +145,15 @@ function Home() {
               ].map((group) => (
                 <div
                   key={group.category}
-                  className="border border-gray-700 p-6"
+                  className="p-6 border border-gray-700"
                 >
-                  <h3 className="text-xl font-bold mb-4 text-white">{group.category}</h3>
+                  <h3 className="mb-4 text-xl font-bold text-white">
+                    {group.category}
+                  </h3>
                   <ul className="space-y-2 text-gray-300">
                     {group.skills.map((skill) => (
                       <li key={skill} className="flex items-center">
-                        <span className="w-2 h-2 bg-white rounded-full mr-3" />
+                        <span className="w-2 h-2 mr-3 bg-white rounded-full" />
                         {skill}
                       </li>
                     ))}

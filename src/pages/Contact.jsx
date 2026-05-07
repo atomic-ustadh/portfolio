@@ -18,17 +18,17 @@ function Contact() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-12 bg-white">
-      <div className="max-w-2xl mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Contact Me</h1>
-        <p className="text-gray-600 text-center mb-12">
+    <div className="min-h-screen pt-24 pb-12 text-white bg-black">
+      <div className="max-w-2xl px-4 mx-auto">
+        <h1 className="mb-4 text-4xl font-bold text-center md:text-5xl">Contact Me</h1>
+        <p className="mb-12 text-center text-gray-200">
           Have a question or want to work together? Send me a message!
         </p>
 
         {status === 'success' ? (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold mb-4">Thank You!</h2>
-            <p className="text-gray-600">Your message has been sent successfully.</p>
+          <div className="py-12 text-center">
+            <h2 className="mb-4 text-2xl font-bold">Thank You!</h2>
+            <p className="text-gray-900">Your message has been sent successfully.</p>
           </div>
         ) : (
           <form
@@ -42,7 +42,7 @@ function Contact() {
             <input name="bot-field" hidden />
 
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
+              <label htmlFor="name" className="block mb-2 text-sm font-medium">
                 Name
               </label>
               <input
@@ -50,12 +50,12 @@ function Contact() {
                 name="name"
                 id="name"
                 required
-                className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+                className="w-full px-4 py-3 bg-black border border-gray-300 focus:outline-none"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
+              <label htmlFor="email" className="block mb-2 text-sm font-medium">
                 Email
               </label>
               <input
@@ -63,12 +63,12 @@ function Contact() {
                 name="email"
                 id="email"
                 required
-                className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+                className="w-full px-4 py-3 bg-black border border-gray-300 focus:outline-none"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
+              <label htmlFor="message" className="block mb-2 text-sm font-medium">
                 Message
               </label>
               <textarea
@@ -76,31 +76,31 @@ function Contact() {
                 id="message"
                 rows="6"
                 required
-                className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none resize-none"
+                className="w-full px-4 py-3 bg-black border border-gray-300 resize-none focus:outline-none"
               />
             </div>
 
             {status === 'error' && (
-              <p className="text-gray-600">Something went wrong. Please try again.</p>
+              <p className="text-gray-200">Something went wrong. Please try again.</p>
             )}
 
             <button
               type="submit"
-              className="w-full py-3 bg-black text-white font-semibold hover:bg-gray-800 transition-colors"
+              className="w-full py-3 font-semibold text-white transition-colors bg-gray-800 hover:bg-gray-800"
             >
               Send Message
             </button>
           </form>
         )}
 
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center">
-          <p className="text-gray-600 mb-4">Or reach out directly:</p>
+        <div className="pt-8 mt-12 text-center border-t border-gray-200">
+          <p className="mb-4 text-white">Or reach out directly:</p>
           <div className="flex justify-center space-x-6">
             <a
               href="https://github.com/atomicustadh"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:underline"
+              className="text-white hover:underline"
             >
               GitHub
             </a>
@@ -108,7 +108,7 @@ function Contact() {
               href="https://linkedin.com/in/atomicustadh"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:underline"
+              className="text-white hover:underline"
             >
               LinkedIn
             </a>

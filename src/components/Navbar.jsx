@@ -25,13 +25,13 @@ function Navbar() {
     <nav className={`fixed top-0 left-0 right-0 text-white z-50 transition-all duration-300 ${
       isScrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-transparent'
     }`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-xl font-bold text-white">
             atomicustadh
           </Link>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden space-x-8 md:flex">
             {links.map((link) => (
               <Link
                 key={link.to}
@@ -49,10 +49,10 @@ function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            className="p-2 text-gray-400 md:hidden hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-label="Toggle menu"
           >
-            <div className="w-6 h-5 flex flex-col justify-between">
+            <div className="flex flex-col justify-between w-6 h-5">
               <span className={`block h-0.5 bg-current transform transition ${isOpen ? 'rotate-45 translate-y-2.25' : ''}`} />
               <span className={`block h-0.5 bg-current transition ${isOpen ? 'opacity-0' : ''}`} />
               <span className={`block h-0.5 bg-current transform transition ${isOpen ? '-rotate-45 -translate-y-2.25' : ''}`} />

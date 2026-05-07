@@ -1,17 +1,17 @@
 function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-8 mt-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-600 text-sm">
+    <footer className="py-8 bg-black border-t border-gray-200 ">
+      <div className="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between md:flex-row">
+          <p className="text-sm text-gray-200">
             © {new Date().getFullYear()} atomicustadh. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          <div className="flex mt-4 space-x-6 md:mt-0">
             <a
               href="https://github.com/atomicustadh"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-black transition-colors"
+              className="px-2 text-gray-100 transition-colors hover:bg-white hover:text-black"
             >
               GitHub
             </a>
@@ -19,7 +19,7 @@ function Footer() {
               href="https://linkedin.com/in/atomicustadh"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-black transition-colors"
+              className="px-2 text-gray-100 transition-colors hover:bg-white hover:text-black"
             >
               LinkedIn
             </a>
