@@ -32,7 +32,7 @@ function Contact() {
           </div>
         ) : (
           <form
-            name="contact"
+            name="contact-me-form"
             method="POST"
             data-netlify="true"
             onSubmit={handleSubmit}
