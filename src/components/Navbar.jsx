@@ -13,10 +13,10 @@ function Navbar() {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
+    <nav className="fixed top-0 left-0 right-0 bg-black  text-white backdrop-blur-sm z-50 border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold text-black">
+          <Link to="/" className="text-xl font-bold text-white">
             atomicustadh
           </Link>
 
@@ -27,8 +27,8 @@ function Navbar() {
                 to={link.to}
                 className={`${
                   location.pathname === link.to
-                    ? 'text-black font-bold'
-                    : 'text-gray-600 hover:text-black'
+                    ? 'text-white font-bold'
+                    : 'text-gray-400 hover:text-white'
                 } transition-colors`}
               >
                 {link.label}
@@ -38,7 +38,7 @@ function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-black"
+            className="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-label="Toggle menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
@@ -51,7 +51,7 @@ function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden bg-black border-t border-gray-200">
           {links.map((link) => (
             <Link
               key={link.to}
@@ -59,8 +59,8 @@ function Navbar() {
               onClick={() => setIsOpen(false)}
               className={`block px-4 py-3 ${
                 location.pathname === link.to
-                  ? 'text-black font-bold bg-gray-50'
-                  : 'text-gray-600'
+                  ? 'text-white font-bold bg-gray-50'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-50'
               }`}
               aria-current={location.pathname === link.to ? 'page' : undefined}
             >
