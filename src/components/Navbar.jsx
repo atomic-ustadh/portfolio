@@ -73,8 +73,8 @@ function Navbar() {
               onClick={() => setIsOpen(false)}
               className={`block px-4 py-3 ${
                 location.pathname === link.to
-                  ? 'text-white font-bold bg-gray-50'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-50'
+                  ? 'text-white font-bold bg-gray-800'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
               }`}
               aria-current={location.pathname === link.to ? 'page' : undefined}
             >
