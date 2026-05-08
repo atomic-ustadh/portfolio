@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import mail from '../images/mail.svg';
+import telephone from '../images/telephone.svg';
 
 function Contact() {
   const [status, setStatus] = useState('idle')
@@ -88,31 +90,29 @@ function Contact() {
 
             <button
               type="submit"
-              className="w-full py-3 font-semibold text-white transition-colors bg-gray-800 hover:bg-gray-800"
+              className="w-full py-3 font-semibold text-white transition-colors bg-gray-800 border border-black hover:bg-black hover:border-white"
             >
               Send Message
             </button>
           </form>
         )}
 
-        <div className="pt-8 mt-12 text-center border-t border-gray-200">
-          <p className="mb-4 text-white">Or reach out directly:</p>
-          <div className="flex justify-center space-x-6">
+        <div className="pt-8 mt-12 text-center border-t border-gray-700">
+          <p className="mb-6 text-white">Or reach out directly:</p>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-8">
             <a
-              href="https://github.com/atomicustadh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:underline"
+              href="mailto:ibnluqmanalawfaaweey@gmail.com"
+              className="flex items-center gap-2 text-white hover:text-gray-300 hover:underline"
             >
-              GitHub
+              <img src={mail} alt="" className="w-5 h-5 brightness-0 invert" />
+              Send an E-mail
             </a>
             <a
-              href="https://linkedin.com/in/atomicustadh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:underline"
+              href="tel:+2349065750161"
+              className="flex items-center gap-2 text-white hover:text-gray-300 hover:underline"
             >
-              LinkedIn
+              <img src={telephone} alt="" className="w-5 h-5 brightness-0 invert" />
+              Call Me
             </a>
           </div>
         </div>

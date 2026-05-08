@@ -25,7 +25,8 @@ function BlogList() {
 
       <SEO title="Blog" description="Read technical articles and tutorials by atomicustadh" />
       <div className="relative z-10 max-w-6xl px-4 mx-auto">
-        <h1 className="mb-12 text-4xl font-bold text-center text-white md:text-5xl">Blog</h1>
+        <h1 className="mb-2 text-4xl font-bold text-center text-white md:text-5xl">Blog</h1>
+        <p className="text=sm text-white text-center mb-12 ">Atricles  ||  Journal Publications  ||  Tutorials</p>
 
         {allTags.length > 0 && (
           <div className="flex flex-wrap justify-center gap-2 mb-8">

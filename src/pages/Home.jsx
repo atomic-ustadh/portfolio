@@ -6,7 +6,7 @@ function Home() {
     <>
       <SEO
         title="Home"
-        description="atomicustadh - Full Stack Developer portfolio with blog"
+        description="atomicustadh - Frontend Developer portfolio with blog"
       />
       {/* Background Image with Overlay */}
       <div
@@ -53,7 +53,7 @@ function Home() {
             </h2>
             <div className="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700">
               <p className="mb-4">
-                I'm Abdurrahman Luqman Yusuf, a Full Stack Developer and a Linguist, with a B.A. in Arabic
+                I'm Abdurrahman Luqman Yusuf, a Frontend Developer and a Linguist, with a B.A. in Arabic
                 from the University of Abuja (2019-2023) and currently pursuing my M.A. in
                 Arabic Language and Linguistics.
               </p>
@@ -107,6 +107,9 @@ function Home() {
                 <div key={service.title} className="p-6 transition-shadow border border-gray-200 hover:shadow-lg">
                   <h3 className="mb-3 text-xl font-bold">{service.title}</h3>
                   <p className="leading-relaxed text-gray-300">{service.description}</p>
+                  <button className="px-4 py-2 mt-4 text-[10px] text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                    Request {service.title}
+                  </button>
                 </div>
               ))}
             </div>
