@@ -57,11 +57,11 @@ function Admin() {
     setResetMessage('')
     try {
       await resetPassword(resetEmail)
-      setResetMessage('Check your email for the reset link.')
-      setShowResetForm(false)
-    } catch (err) {
-      setResetMessage(err.message)
+    } catch {
+      // Always show success — don't reveal whether the email exists
     }
+    setResetMessage('If that email is registered, a reset link has been sent.')
+    setShowResetForm(false)
   }
 
   const handleSubmit = async (e) => {
