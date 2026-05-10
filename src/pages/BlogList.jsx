@@ -26,29 +26,21 @@ function BlogList() {
       <SEO title="Blog" description="Read technical articles and tutorials by atomicustadh" />
       <div className="relative z-10 max-w-6xl px-4 mx-auto">
         <h1 className="mb-2 text-4xl font-bold text-center text-white md:text-5xl">Blog</h1>
-        <p className="text=sm text-white text-center mb-12 ">Atricles  ||  Journal Publications  ||  Tutorials</p>
-
+        <p className="text=sm text-white text-center mb-2 ">Articles  ||  Journal Publications  ||  Tutorials</p>
+            <br /> <br />
         {allTags.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            <button
-              onClick={() => setSelectedTag(null)}
-              className={`px-4 py-2 text-sm ${
-                !selectedTag ? 'bg-black text-white' : 'bg-gray-100 text-black hover:bg-gray-200'
-              } transition-colors`}
+          <div className="flex justify-center mb-6 space-x-4">
+            <h4 className="mb-2 text-lg font-semibold text-white">Select Tags</h4>
+            <select
+              value={selectedTag ?? ''}
+              onChange={(e) => setSelectedTag(e.target.value || null)}
+              className="px-2 py-2 text-sm bg-white focus:outline-none"
             >
-              All
-            </button>
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => setSelectedTag(tag)}
-                className={`px-4 py-2 text-sm ${
-                  selectedTag === tag ? 'bg-black text-white' : 'bg-gray-100 text-black hover:bg-gray-200'
-                } transition-colors`}
-              >
-                {tag}
-              </button>
-            ))}
+              <option value="">All</option>
+              {allTags.map((tag) => (
+                <option key={tag} value={tag}>{tag}</option>
+              ))}
+            </select>
           </div>
         )}
 
