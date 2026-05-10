@@ -10,7 +10,7 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           firebase: ['firebase/app', 'firebase/firestore', 'firebase/auth'],
-          editor: ['@tiptap/react', '@tiptap/starter-kit'],
+          editor: ['@uiw/react-md-editor'],
         }
       }
     }

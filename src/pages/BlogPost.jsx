@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import DOMPurify from 'dompurify'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import { getPostBySlug } from '../lib/blogService'
 import SEO from '../components/SEO'
 
@@ -29,7 +30,6 @@ function BlogPost() {
   if (error) return <div className="pt-32 text-center text-gray-600">{error}</div>
 
   const date = post.publishedAt?.toDate?.() || new Date()
-  const sanitizedContent = DOMPurify.sanitize(post.content || '')
 
   return (
     <div className="min-h-screen pt-24 pb-12 bg-black">
@@ -57,10 +57,9 @@ function BlogPost() {
           </div>
         )}
 
-        <div
-          className="prose text-white max-w-none"
-          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-        />
+        <div className="prose text-white max-w-none">
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{post.content || ''}</ReactMarkdown>
+        </div>
       </article>
     </div>
   )
