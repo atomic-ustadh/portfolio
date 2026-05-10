@@ -8,11 +8,14 @@ import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
 
 function Admin() {
-  const { user, loading, login, logout } = useAuth()
+  const { user, loading, login, logout, resetPassword } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [authError, setAuthError] = useState('')
+  const [showResetForm, setShowResetForm] = useState(false)
+  const [resetEmail, setResetEmail] = useState('')
+  const [resetMessage, setResetMessage] = useState('')
   const [posts, setPosts] = useState([])
   const [editingPost, setEditingPost] = useState(null)
   const [formData, setFormData] = useState({ title: '', content: '', excerpt: '', tags: '' })
@@ -46,6 +49,18 @@ function Admin() {
       await login(email, password)
     } catch (err) {
       setAuthError('Invalid credentials')
+    }
+  }
+
+  const handleResetPassword = async (e) => {
+    e.preventDefault()
+    setResetMessage('')
+    try {
+      await resetPassword(resetEmail)
+      setResetMessage('Check your email for the reset link.')
+      setShowResetForm(false)
+    } catch (err) {
+      setResetMessage(err.message)
     }
   }
 
@@ -90,33 +105,73 @@ function Admin() {
     return (
       <div className="min-h-screen pt-32 pb-12 bg-black">
         <div className="max-w-md px-4 mx-auto">
-          <h1 className="mb-8 text-3xl font-bold text-center text-white">Admin Login</h1>
-          <form onSubmit={handleAuth} className="space-y-6">
-            <div>
-              <label className="block mb-2 text-sm font-medium text-white">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 text-sm font-medium text-white">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
-              />
-            </div>
-            {authError && <p className="text-gray-600">{authError}</p>}
-            <button type="submit" className="w-full py-3 font-semibold text-white bg-gray-800 border hover:border-gray-300">
-              Login
-            </button>
-          </form>
+          {!showResetForm ? (
+            <>
+              <h1 className="mb-8 text-3xl font-bold text-center text-white">Admin Login</h1>
+              <form onSubmit={handleAuth} className="space-y-6">
+                <div>
+                  <label className="block mb-2 text-sm font-medium text-white">Email</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block mb-2 text-sm font-medium text-white">Password</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+                  />
+                </div>
+                {authError && <p className="text-gray-600">{authError}</p>}
+                <button type="submit" className="w-full py-3 font-semibold text-white bg-gray-800 border hover:border-gray-300">
+                  Login
+                </button>
+              </form>
+              <p className="mt-4 text-center">
+                <button
+                  onClick={() => { setShowResetForm(true); setResetMessage(''); setResetEmail('') }}
+                  className="text-gray-400 underline hover:text-white"
+                >
+                  Forgot Password?
+                </button>
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 className="mb-8 text-3xl font-bold text-center text-white">Reset Password</h1>
+              <form onSubmit={handleResetPassword} className="space-y-6">
+                <div>
+                  <label className="block mb-2 text-sm font-medium text-white">Email</label>
+                  <input
+                    type="email"
+                    value={resetEmail}
+                    onChange={(e) => setResetEmail(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 focus:border-black focus:outline-none"
+                  />
+                </div>
+                {resetMessage && <p className="text-gray-400">{resetMessage}</p>}
+                <button type="submit" className="w-full py-3 font-semibold text-white bg-gray-800 border hover:border-gray-300">
+                  Send Reset Link
+                </button>
+              </form>
+              <p className="mt-4 text-center">
+                <button
+                  onClick={() => { setShowResetForm(false); setAuthError('') }}
+                  className="text-gray-400 underline hover:text-white"
+                >
+                  Back to Login
+                </button>
+              </p>
+            </>
+          )}
         </div>
       </div>
     )

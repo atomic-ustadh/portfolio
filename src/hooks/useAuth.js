@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { auth } from '../lib/firebase'
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth'
 
 export function useAuth() {
   const [user, setUser] = useState(null)
@@ -19,5 +19,7 @@ export function useAuth() {
 
   const logout = () => signOut(auth)
 
-  return { user, loading, login, logout }
+  const resetPassword = (email) => sendPasswordResetEmail(auth, email)
+
+  return { user, loading, login, logout, resetPassword }
 }
