@@ -6,6 +6,31 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Image from '@tiptap/extension-image'
+import { TextStyle } from '@tiptap/extension-text-style'
+import Color from '@tiptap/extension-color'
+import { Extension } from '@tiptap/core'
+
+const TextDirection = Extension.create({
+  name: 'textDirection',
+
+  addGlobalAttributes() {
+    return [
+      {
+        types: ['heading', 'paragraph', 'blockquote', 'orderedList', 'bulletList', 'listItem'],
+        attributes: {
+          dir: {
+            default: null,
+            parseHTML: el => el.getAttribute('dir'),
+            renderHTML: attrs => {
+              if (!attrs.dir) return {}
+              return { dir: attrs.dir }
+            },
+          },
+        },
+      },
+    ]
+  },
+})
 
 function Admin() {
   const { user, loading, login, logout, resetPassword } = useAuth()
@@ -21,7 +46,7 @@ function Admin() {
   const [formData, setFormData] = useState({ title: '', content: '', excerpt: '', tags: '' })
 
   const editor = useEditor({
-    extensions: [StarterKit, Link, Image],
+    extensions: [StarterKit, Link, Image, TextStyle, Color, TextDirection],
     content: formData.content,
     onUpdate: ({ editor }) => {
       setFormData((prev) => ({ ...prev, content: editor.getHTML() }))
@@ -96,6 +121,21 @@ function Admin() {
       await deletePost(id)
       loadPosts()
     }
+  }
+
+  const addLink = () => {
+    const url = prompt('Enter URL:')
+    if (url) editor?.chain().focus().setLink({ href: url }).run()
+  }
+
+  const addImage = () => {
+    const url = prompt('Enter image URL:')
+    if (url) editor?.chain().focus().setImage({ src: url }).run()
+  }
+
+  const setTextDirection = (dir) => {
+    editor?.view.dom.setAttribute('dir', dir)
+    editor?.view.focus()
   }
 
   if (loading) return <div className="pt-32 text-center">Loading...</div>
@@ -213,11 +253,26 @@ function Admin() {
           <div>
             <label className="block mb-2 text-sm font-medium text-white">Content</label>
             <div className="border border-gray-300">
-              <div className="flex gap-2 p-2 text-white border-b border-gray-300">
-                <button type="button" onClick={() => editor?.chain().focus().toggleBold().run()} className="px-2 py-1 hover:bg-gray-800">Bold</button>
-                <button type="button" onClick={() => editor?.chain().focus().toggleItalic().run()} className="px-2 py-1 hover:bg-gray-800">Italic</button>
-                <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} className="px-2 py-1 hover:bg-gray-800">H2</button>
-                <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()} className="px-2 py-1 hover:bg-gray-800">List</button>
+              <div className="flex flex-wrap gap-1 p-2 text-white border-b border-gray-300">
+                <button type="button" onClick={() => editor?.chain().focus().toggleBold().run()} className="px-2 py-1 text-sm hover:bg-gray-800">B</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleItalic().run()} className="px-2 py-1 text-sm hover:bg-gray-800 italic">I</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleUnderline().run()} className="px-2 py-1 text-sm hover:bg-gray-800 underline">U</button>
+                <span className="w-px mx-1 bg-gray-600" />
+                <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()} className="px-2 py-1 text-sm hover:bg-gray-800">H1</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} className="px-2 py-1 text-sm hover:bg-gray-800">H2</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()} className="px-2 py-1 text-sm hover:bg-gray-800">H3</button>
+                <span className="w-px mx-1 bg-gray-600" />
+                <button type="button" onClick={() => editor?.chain().focus().toggleBulletList().run()} className="px-2 py-1 text-sm hover:bg-gray-800">UL</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleOrderedList().run()} className="px-2 py-1 text-sm hover:bg-gray-800">OL</button>
+                <button type="button" onClick={() => editor?.chain().focus().toggleBlockquote().run()} className="px-2 py-1 text-sm hover:bg-gray-800">Quote</button>
+                <span className="w-px mx-1 bg-gray-600" />
+                <button type="button" onClick={addLink} className="px-2 py-1 text-sm hover:bg-gray-800">Link</button>
+                <button type="button" onClick={addImage} className="px-2 py-1 text-sm hover:bg-gray-800">Image</button>
+                <span className="w-px mx-1 bg-gray-600" />
+                <input type="color" onChange={(e) => editor?.chain().focus().setColor(e.target.value).run()} className="w-7 h-7 p-0 border-0 cursor-pointer" title="Text Color" />
+                <span className="w-px mx-1 bg-gray-600" />
+                <button type="button" onClick={() => setTextDirection('ltr')} className="px-2 py-1 text-sm hover:bg-gray-800" title="Left to Right">LTR</button>
+                <button type="button" onClick={() => setTextDirection('rtl')} className="px-2 py-1 text-sm hover:bg-gray-800" title="Right to Left">RTL</button>
               </div>
               <EditorContent editor={editor} className="p-4 min-h-[200px] bg-white focus:outline-none" />
             </div>
