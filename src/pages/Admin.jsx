@@ -61,7 +61,6 @@ function Admin() {
       // Always show success — don't reveal whether the email exists
     }
     setResetMessage('If that email is registered, a reset link has been sent.')
-    setShowResetForm(false)
   }
 
   const handleSubmit = async (e) => {
