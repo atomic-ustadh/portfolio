@@ -29,7 +29,7 @@ function Home() {
         "My Final year project for my B.A. in Arabic Language and Literature. It explores the influence of Arabic on the Yoruba language and culture among Nigerian Muslims, highlighting linguistic, cultural, and religious impacts.",
       technologies: ["Linguistics", "العربية", "Nigerian History", "اﻹقتراض اللغوي", "اللفويات",],
       liveDemo: "https://techtuts.netlify.app/",
-      image: "/images/tech_tuts.png",
+      image: "/images/ba_project.png",
     },
   ];
 

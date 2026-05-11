@@ -25,6 +25,7 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/CV" element={<CV />} />
           </Routes>
         </Suspense>
       </main>
