@@ -204,16 +204,18 @@ function Home() {
                   <p className="mb-4 text-sm text-gray-300">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-[10px] text-white bg-gray-800"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  {project.technologies && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 text-[10px] text-white bg-gray-800"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex gap-4">
                     {project.liveDemo && (
                       <a
