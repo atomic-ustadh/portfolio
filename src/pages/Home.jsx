@@ -182,6 +182,8 @@ function Home() {
               Projects
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              
+              {/* Project Card */}
               {projects.map((project) => (
                 <div
                   key={project.title}
@@ -201,9 +203,13 @@ function Home() {
                   <h3 className="mb-2 text-xl font-bold text-white">
                     {project.title}
                   </h3>
+                  
+                  {/* Description */}
                   <p className="mb-4 text-sm text-gray-300">
                     {project.description}
                   </p>
+                  
+                  {/* Technologies Used */}
                   {project.technologies && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
@@ -216,6 +222,8 @@ function Home() {
                       ))}
                     </div>
                   )}
+                  
+                  {/* Live Demo & Github */}
                   <div className="flex gap-4">
                     {project.liveDemo && (
                       <a
@@ -248,6 +256,8 @@ function Home() {
                       </a>
                     )}
                   </div>
+
+                  {/* GitHub Issues */}
                   {project.gitissue && (
                     <p className="mt-4 text-sm text-gray-500">
                       Want to contribute? Check opened{" "}
@@ -259,6 +269,8 @@ function Home() {
                       </a>
                     </p>
                   )}
+
+                  {/* Non-Tech Project Link */}
                   {project.link && (
                     <p className="text-sm">
                       Link:{" "}
