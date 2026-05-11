@@ -24,12 +24,19 @@ function Home() {
       image: "/images/tech_tuts.png",
     },
     {
-      title: "Arabic Language and it's Impact on Yoruba Speaking Muslims in Nigeria",
+      title:
+        "Arabic Language and it's Impact on Yoruba Speaking Muslims in Nigeria",
       description:
         "My Final year project for my B.A. in Arabic Language and Literature. It explores the influence of Arabic on the Yoruba language and culture among Nigerian Muslims, highlighting linguistic, cultural, and religious impacts.",
-      technologies: ["Linguistics", "العربية", "Nigerian History", "اﻹقتراض اللغوي", "اللفويات",],
-      liveDemo: "https://techtuts.netlify.app/",
+      technologies: [
+        "Linguistics",
+        "العربية",
+        "Nigerian History",
+        "اﻹقتراض اللغوي",
+        "اللفويات",
+      ],
       image: "/images/ba_project.png",
+      link: "https://baproject.netlify.app/",
     },
   ];
 
@@ -37,7 +44,7 @@ function Home() {
     <>
       <SEO
         title="Home"
-        description="atomicustadh - Frontend Developer portfolio with blog"
+        description="Atomic Ustadh - Welcome to my personal portfolio website! I'm Abdurrahman Luqman Yusuf, a Frontend Dev"
       />
       {/* Background Image with Overlay */}
       <div
@@ -208,40 +215,61 @@ function Home() {
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <a
-                      href={project.liveDemo}
-                      className="text-white hover:underline"
-                    >
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.github}
-                      className="text-white hover:underline"
-                    >
-                      GitHub
-                    </a>
+                    {project.liveDemo && (
+                      <a
+                        href={project.liveDemo}
+                        className="text-white hover:underline"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        className="text-white hover:underline"
+                      >
+                        GitHub
+                      </a>
+                    )}
 
-                    <a
-                      href={project.github}
-                      className="flex items-center gap-1 px-2 py-1 text-[8px] text-white border border-white rounded-lg shadow hover:shadow-xl hover:shadow-red-600"
-                    >
-                      <img
-                        src={starIcon}
-                        alt="star"
-                        className="w-3 h-3 brightness-0 invert"
-                      />
-                      Star on Github
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        className="flex items-center gap-1 px-2 py-1 text-[8px] text-white border border-white rounded-lg shadow hover:shadow-xl hover:shadow-red-600"
+                      >
+                        <img
+                          src={starIcon}
+                          alt="star"
+                          className="w-3 h-3 brightness-0 invert"
+                        />
+                        Star on Github
+                      </a>
+                    )}
                   </div>
-                  <p className="mt-4 text-sm text-gray-500">
-                    Want to contribute? Check opened{" "}
-                    <a
-                      href={project.gitissue}
-                      className="text-blue-500 hover:underline"
-                    >
-                      issues
-                    </a>
-                  </p>
+                  {project.gitissue && (
+                    <p className="mt-4 text-sm text-gray-500">
+                      Want to contribute? Check opened{" "}
+                      <a
+                        href={project.gitissue}
+                        className="text-blue-500 hover:underline"
+                      >
+                        issues
+                      </a>
+                    </p>
+                  )}
+                  {project.link && (
+                    <p className="text-sm">
+                      Link:{" "}
+                      <a
+                        href={project.link}
+                        className="text-blue-500 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Project
+                      </a>
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
