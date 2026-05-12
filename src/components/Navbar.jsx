@@ -19,7 +19,6 @@ function Navbar() {
     { to: '/blog', label: 'Blog' },
     { to: '/contact', label: 'Contact' },
     { to: '/admin', label: 'Admin' },
-    { to: '/CV', label: 'CV' },
   ]
 
   return (
