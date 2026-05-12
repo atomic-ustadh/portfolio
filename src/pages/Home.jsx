@@ -15,7 +15,7 @@ function Home() {
         className="fixed inset-0 z-0 bg-fixed bg-center bg-cover"
         style={{ backgroundImage: "url(/my_profile_e.png)" }}
       >
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
       {/* Background Image with Overlay */}
 
