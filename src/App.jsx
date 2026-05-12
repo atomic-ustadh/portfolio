@@ -8,6 +8,7 @@ const BlogList = lazy(() => import('./pages/BlogList'))
 const BlogPost = lazy(() => import('./pages/BlogPost'))
 const Admin = lazy(() => import('./pages/Admin'))
 const CV = lazy(() => import('./pages/CV'))
+const RequestService = lazy(() => import('./pages/RequestService'))
 const Contact = lazy(() => import('./pages/Contact'))
 
 function Loading() {
@@ -28,6 +29,7 @@ function Layout() {
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/cv" element={<CV />} />
+            <Route path="/request-service" element={<RequestService />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

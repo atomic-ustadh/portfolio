@@ -1,9 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import SEO from "../components/SEO";
 import starIcon from "../images/star.svg";
 import { projects, services, skills } from "../data/portfolioData";
 
 function Home() {
+  const { hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace("#", "")
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+      }, 100)
+    }
+  }, [hash])
   return (
     <>
       <SEO
@@ -98,9 +109,12 @@ function Home() {
                   <p className="leading-relaxed text-gray-300">
                     {service.description}
                   </p>
-                  <button className="px-4 py-2 mt-4 text-[10px] text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                  <Link
+                    to={`/request-service?service=${encodeURIComponent(service.title)}`}
+                    className="inline-block px-4 py-2 mt-4 text-[10px] text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                  >
                     Request {service.title}
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>

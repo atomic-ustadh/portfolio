@@ -17,6 +17,7 @@ function Navbar() {
   const links = [
     { to: '/', label: 'Home' },
     { to: '/blog', label: 'Blog' },
+    { to: '/#services', label: 'Services' },
     { to: '/cv', label: 'CV' },
     { to: '/contact', label: 'Contact' },
     { to: '/admin', label: 'Admin' },
