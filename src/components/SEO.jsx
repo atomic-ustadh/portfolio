@@ -10,14 +10,14 @@ function SEO({ title, description, image }) {
 
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
-      metaDescription.setAttribute('content', description || 'Personal portfolio showcasing projects, skills, and technical articles')
+      metaDescription.setAttribute('content', description || 'Abdurrahman Luqman Yusuf | atomic ustadh | Personal portfolio showcasing projects, skills, and technical articles, web development and ranslation')
     }
 
     const ogTitle = document.querySelector('meta[property="og:title"]')
-    if (ogTitle) ogTitle.setAttribute('content', title || 'atomicustadh | Portfolio')
+    if (ogTitle) ogTitle.setAttribute('content', title || 'atomicustadh portfolio | Welcome to my personal portfolio | Abdurrahman Luqman Yusuf')
 
     const ogDesc = document.querySelector('meta[property="og:description"]')
-    if (ogDesc) ogDesc.setAttribute('content', description || 'Personal portfolio showcasing projects, skills, and technical articles')
+    if (ogDesc) ogDesc.setAttribute('content', description || 'Abdurrahman Luqman Yusuf | atomic ustadh | Personal portfolio showcasing projects, skills, and technical articles, web development and translation')
 
     const ogUrl = document.querySelector('meta[property="og:url"]')
     if (ogUrl) ogUrl.setAttribute('content', window.location.origin + location.pathname)
