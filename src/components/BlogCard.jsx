@@ -2,15 +2,13 @@ import { Link } from 'react-router-dom'
 
 function BlogCard({ post }) {
   const date = post.publishedAt?.toDate?.() || new Date()
-  const readingTime = Math.ceil((post.content?.length || 0) / 2000) || 1
 
   return (
     <Link to={`/blog/${post.slug}`} className="block p-6 transition-shadow border border-gray-700 hover:shadow-lg">
       <h3 className="mb-2 text-xl font-bold text-white hover:underline">{post.title}</h3>
       <p className="mb-4 text-white line-clamp-2">{post.excerpt}</p>
-      <div className="flex items-center justify-between text-sm text-gray-400">
+      <div className="text-sm text-gray-400">
         <span>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-        <span>{readingTime} min read</span>
       </div>
       {post.tags?.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">

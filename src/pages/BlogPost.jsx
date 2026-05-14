@@ -41,10 +41,8 @@ function BlogPost() {
 
         <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">{post.title}</h1>
 
-        <div className="flex items-center gap-4 mb-8 text-sm text-gray-400">
+        <div className="mb-8 text-sm text-gray-400">
           <span>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-          <span>·</span>
-          <span>{Math.ceil((post.content?.length || 0) / 2000) || 1} min read</span>
         </div>
 
         {post.tags?.length > 0 && (
