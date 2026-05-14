@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { createPost, getPosts, deletePost, updatePost } from '../lib/blogService'
-import MDEditor from '@uiw/react-md-editor'
+import SimpleMDE from 'react-simplemde-editor'
+import 'easymde/dist/easymde.min.css'
 
 function Admin() {
   const { user, loading, login, logout, resetPassword } = useAuth()
@@ -191,13 +192,11 @@ function Admin() {
             />
           </div>
 
-          <div data-color-mode="dark">
+          <div>
             <label className="block mb-2 text-sm font-medium text-white">Content</label>
-            <MDEditor
+            <SimpleMDE
               value={formData.content}
               onChange={(val) => setFormData((prev) => ({ ...prev, content: val || '' }))}
-              preview="live"
-              height={500}
             />
           </div>
 

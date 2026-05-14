@@ -9,3 +9,74 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* EasyMDE dark theme for admin */
+.EasyMDEContainer .CodeMirror {
+  background: #000;
+  color: #fff;
+  border-color: #555;
+}
+
+.EasyMDEContainer .editor-toolbar {
+  background: #111;
+  border-color: #555;
+}
+
+.EasyMDEContainer .editor-toolbar button {
+  color: #ccc;
+}
+
+.EasyMDEContainer .editor-toolbar button:hover {
+  background: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+.EasyMDEContainer .editor-toolbar button.active {
+  background: #222;
+  color: #fff;
+  border-color: #666;
+}
+
+.EasyMDEContainer .editor-preview,
+.EasyMDEContainer .editor-preview-side {
+  background: #000;
+  color: #fff;
+  border-color: #555;
+}
+
+.EasyMDEContainer .CodeMirror-cursor {
+  border-color: #fff;
+}
+
+.EasyMDEContainer .CodeMirror-selected {
+  background: #333;
+}
+
+.EasyMDEContainer .editor-statusbar {
+  color: #888;
+}
+
+.EasyMDEContainer .cm-s-easymde .cm-header {
+  color: #fff;
+}
+
+.EasyMDEContainer .cm-s-easymde .cm-comment {
+  background: #222;
+}
+
+.EasyMDEContainer .cm-s-easymde .cm-quote {
+  color: #aaa;
+}
+
+.EasyMDEContainer .cm-s-easymde .cm-variable-2 {
+  color: #ddd;
+}
+
+.EasyMDEContainer .cm-s-easymde .cm-link {
+  color: #888;
+}
+
+.EasyMDEContainer .cm-s-easymde .cm-url {
+  color: #666;
+}
